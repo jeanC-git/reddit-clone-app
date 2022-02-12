@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\v1\RestApiApp\Comment\RestApiCommentController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\v1\RestApiApp\Comment\RestApiCommentController;
 
 Route::controller(RestApiCommentController::class)->group(function () {
     Route::get('/{comment}', 'show');

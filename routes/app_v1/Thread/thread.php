@@ -10,7 +10,7 @@ Route::controller(RestApiThreadController::class)
         Route::get('/my-threads', 'myThreads');
 
         Route::post('/', 'store');
-        Route::put('/{slug}', 'update');
+        Route::put('/{thread_id}', 'update');
 
         Route::get('/{slug}', 'show');
         Route::get('/comments/{slug}', 'getComments');

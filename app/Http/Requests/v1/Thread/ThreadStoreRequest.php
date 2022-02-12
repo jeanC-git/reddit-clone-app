@@ -23,28 +23,18 @@ class ThreadStoreRequest extends ApiFormRequest
      */
     public function rules()
     {
-//        if (request()->method() === 'POST'):
-            return [
-                'title' => 'required|string|min:20|max:100',
-                'text' => 'required|string|min:20|max:250',
-                'app_user_id' => 'required|exists:app_users,id',
-            ];
-//        elseif (request()->method() === 'PUT'):
-//            return [
-//                'title' => 'nullable|string|min:20|max:100',
-//                'description' => 'nullable|string|min:20|max:250',
-//            ];
-//        endif;
+        return [
+            'title' => 'required|string|min:20|max:100',
+            'text' => 'required|string|min:20|max:250',
+            'app_user_id' => 'required|exists:app_users,id',
+        ];
     }
-
 
     protected function prepareForValidation()
     {
-        if (request()->method() === 'POST'):
-            $app_user = auth()->user();
-            $data['app_user_id'] = $app_user->id;
+        $app_user = auth()->user();
+        $data['app_user_id'] = $app_user->id;
 
-            return $this->merge($data)->all();
-        endif;
+        return $this->merge($data)->all();
     }
 }

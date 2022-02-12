@@ -3,11 +3,13 @@
 namespace App\Models\v1;
 
 use App\Traits\ApiResponse;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use function auth;
 
 class Comment extends BaseModel
 {
     use ApiResponse;
+    use HasFactory;
 
     protected $fillable = [
         'text', 'likes', 'dislikes',

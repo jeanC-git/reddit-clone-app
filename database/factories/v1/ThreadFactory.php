@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories;
+namespace Database\Factories\v1;
 
 use App\Models\v1\AppUser;
 use App\Models\v1\Thread;
@@ -21,8 +21,6 @@ class ThreadFactory extends Factory
             'app_user_id' => AppUser::first()->id,
             'title' => ucwords($this->faker->words(4, true)),
             'text' => $this->faker->paragraph(5),
-//            'likes' => random_int(1,100),
-//            'dislikes' => random_int(1,100),
         ];
     }
 }

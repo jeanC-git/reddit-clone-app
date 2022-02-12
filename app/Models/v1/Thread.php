@@ -3,11 +3,14 @@
 namespace App\Models\v1;
 
 use App\Traits\ApiResponse;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Support\Str;
 use function auth;
 
 class Thread extends BaseModel
 {
     use ApiResponse;
+    use HasFactory;
 
     protected $fillable = [
         'title', 'text', 'slug',
@@ -32,7 +35,11 @@ class Thread extends BaseModel
     public function sluggable(): array
     {
         return [
-            'slug' => ['source' => ['title', 'id'], 'onUpdate' => true, 'unique' => true]
+            'slug' => [
+                'source' => ['title'],
+                'onUpdate' => false,
+                'unique' => true,
+            ]
         ];
     }
 

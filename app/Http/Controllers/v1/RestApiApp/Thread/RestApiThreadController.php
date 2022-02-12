@@ -40,18 +40,29 @@ class RestApiThreadController extends BaseController
     {
         $data = $request->validated();
 
-        return Thread::storeRequest($data);
+
+        $data = Thread::storeRequest($data);
+
+        return $this->success([
+            'msg' => $data['message'],
+            'comment' => new ThreaListResource($data['model'])
+        ]);
     }
 
-    public function update(ThreadStoreRequest $request, $slug): \Illuminate\Http\JsonResponse
+    public function update(ThreadStoreRequest $request, $thread_id): \Illuminate\Http\JsonResponse
     {
         $data = $request->validated();
 
-        $thread = Thread::slug($slug)->first();
+        $thread = Thread::find($thread_id);
         if (!$thread)
             return $this->error('Thread not found.', 404, 404);
 
-        return Thread::storeRequest($data, $thread);
+        $data = Thread::storeRequest($data, $thread);
+
+        return $this->success([
+            'msg' => $data['message'],
+            'comment' => new ThreaListResource($data['model'])
+        ]);
     }
 
     public function show($slug): \Illuminate\Http\JsonResponse

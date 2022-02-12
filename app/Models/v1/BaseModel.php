@@ -20,6 +20,7 @@ class BaseModel extends Model implements HasMedia
     use SoftDeletes;
     use HasFactory;
     use Sluggable;
+
     use ApiResponse;
 
     use CustomMedia;
@@ -44,7 +45,7 @@ class BaseModel extends Model implements HasMedia
 
             return $this->errorResponse(['exception' => $e]);
         }
-        return $this->success($response);
+        return $response;
     }
 
     public function storeOrUpdate($data, $model)

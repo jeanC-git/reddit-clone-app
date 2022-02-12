@@ -24,14 +24,24 @@ class RestApiCommentController extends BaseController
     {
         $data = $request->validated();
 
-        return Comment::storeRequest($data);
+        $data = Comment::storeRequest($data);
+
+        return $this->success([
+            'msg' => $data['message'],
+            'comment' => new ThreadCommentsResource($data['model'])
+        ]);
     }
 
     public function update(CommentStoreRequest $request, Comment $comment): \Illuminate\Http\JsonResponse
     {
         $data = $request->validated();
 
-        return Comment::storeRequest($data, $comment);
+        $data = Comment::storeRequest($data, $comment);
+
+        return $this->success([
+            'msg' => $data['message'],
+            'comment' => new ThreadCommentsResource($data['model'])
+        ]);
     }
 
     public function like(Comment $comment): \Illuminate\Http\JsonResponse
