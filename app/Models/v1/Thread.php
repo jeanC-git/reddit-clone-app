@@ -4,7 +4,6 @@ namespace App\Models\v1;
 
 use App\Traits\ApiResponse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Support\Str;
 use function auth;
 
 class Thread extends BaseModel
@@ -37,7 +36,7 @@ class Thread extends BaseModel
         return [
             'slug' => [
                 'source' => ['title'],
-                'onUpdate' => false,
+                'onUpdate' => true,
                 'unique' => true,
             ]
         ];
@@ -78,19 +77,15 @@ class Thread extends BaseModel
     public function likes()
     {
         $userAction = Taxonomy::rateThread();
-//        $userAction = 3;
         return $this->morphMany(UserAction::class, 'model')
             ->where('taxonomy_id', $userAction->id);
-//            ->where('taxonomy_id', $userAction);
     }
 
     public function dislikes()
     {
         $userAction = Taxonomy::rateThread('dislike');
-//        $userAction = 4;
         return $this->morphMany(UserAction::class, 'model')
             ->where('taxonomy_id', $userAction->id);
-//            ->where('taxonomy_id', $userAction);
     }
 
     public function incrementAction($taxonomy_id, $quantity = 1)
@@ -109,10 +104,11 @@ class Thread extends BaseModel
 
     public static function list($request)
     {
-        $q = self::query();
-        $q->with([
-            'creator'
-        ]);
+        $q = self::query()
+            ->with([
+                'creator'
+            ]);
+
         $q->withCount('comments');
 
         if (key_exists('app_user_id', $request) && $request['app_user_id'])
