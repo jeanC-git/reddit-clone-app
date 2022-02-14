@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\v1\RestApiApp\Auth;
 
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\v1\BaseController;
 use App\Http\Requests\v1\Auth\AuthLoginRequest;
 use App\Http\Requests\v1\Auth\AuthRegisterRequest;
 use App\Models\UserApp;

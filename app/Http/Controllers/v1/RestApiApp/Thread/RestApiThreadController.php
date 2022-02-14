@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\v1\RestApiApp\Thread;
 
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\v1\BaseController;
 use App\Http\Requests\v1\Thread\ThreadListRequest;
 use App\Http\Requests\v1\Thread\ThreadStoreRequest;
 use App\Http\Resources\v1\Thread\ThreadCommentsResource;

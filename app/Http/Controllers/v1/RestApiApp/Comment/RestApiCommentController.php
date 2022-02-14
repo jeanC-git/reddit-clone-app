@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\v1\RestApiApp\Comment;
 
-use App\Http\Controllers\BaseController;
+use App\Http\Controllers\v1\BaseController;
 use App\Http\Requests\v1\Comment\CommentStoreRequest;
 use App\Http\Resources\v1\Comment\CommentRepliesResource;
 use App\Http\Resources\v1\Thread\ThreadCommentsResource;
 use App\Models\v1\Comment;
 use App\Models\v1\Taxonomy;
-use App\Models\v1\Thread;
 
 class RestApiCommentController extends BaseController
 {
