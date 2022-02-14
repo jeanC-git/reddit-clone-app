@@ -15,7 +15,7 @@ use Throwable;
 use function abort;
 use function app;
 
-class BaseModel extends Model implements HasMedia
+abstract class BaseModel extends Model implements HasMedia
 {
     use SoftDeletes;
     use HasFactory;
