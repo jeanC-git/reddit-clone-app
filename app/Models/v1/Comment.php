@@ -68,6 +68,7 @@ class Comment extends BaseModel
     {
         $userAction = Taxonomy::rateComment('dislike-comment');
 //        $userAction = 4;
+
         return $this->morphMany(UserAction::class, 'model')
             ->where('taxonomy_id', $userAction->id);
 //            ->where('taxonomy_id', $userAction);
