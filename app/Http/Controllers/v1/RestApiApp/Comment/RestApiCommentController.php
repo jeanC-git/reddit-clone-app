@@ -5,7 +5,7 @@ namespace App\Http\Controllers\v1\RestApiApp\Comment;
 use App\Http\Controllers\v1\BaseController;
 use App\Http\Requests\v1\Comment\CommentStoreRequest;
 use App\Http\Resources\v1\Comment\CommentRepliesResource;
-use App\Http\Resources\v1\Thread\ThreadCommentsResource;
+use App\Http\Resources\v1\Post\PostCommentsResource;
 use App\Models\v1\Comment;
 use App\Models\v1\Taxonomy;
 
@@ -14,7 +14,7 @@ class RestApiCommentController extends BaseController
 
     public function show(Comment $comment): \Illuminate\Http\JsonResponse
     {
-        $comment = new ThreadCommentsResource($comment);
+        $comment = new PostCommentsResource($comment);
 
         return $this->success(compact('comment'));
     }
@@ -27,7 +27,7 @@ class RestApiCommentController extends BaseController
 
         return $this->success([
             'msg' => $data['message'],
-            'comment' => new ThreadCommentsResource($data['model'])
+            'comment' => new PostCommentsResource($data['model'])
         ]);
     }
 
@@ -39,7 +39,7 @@ class RestApiCommentController extends BaseController
 
         return $this->success([
             'msg' => $data['message'],
-            'comment' => new ThreadCommentsResource($data['model'])
+            'comment' => new PostCommentsResource($data['model'])
         ]);
     }
 

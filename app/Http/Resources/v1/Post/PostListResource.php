@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Resources\v1\Thread;
+namespace App\Http\Resources\v1\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ThreaListResource extends JsonResource
+class PostListResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -21,15 +21,14 @@ class ThreaListResource extends JsonResource
             'text' => $this->text,
             'likes' => $this->likes,
             'dislikes' => $this->dislikes,
-//            'comments' => ThreadCommentsResource::collection($this->comments),
 
             'comments_count' => $this->comments_count ?? 0,
             'created_at' => $this->created_at->diffForHumans(),
             'updated_at' => $this->updated_at->diffForHumans(),
         ];
 
-        if (!in_array('my-threads', $request->segments()))
-            $data['creator'] = new ThreadCreatorResource($this->creator);
+        if (!in_array('my-posts', $request->segments()))
+            $data['creator'] = new PostCreatorResource($this->creator);
 
         return $data;
     }

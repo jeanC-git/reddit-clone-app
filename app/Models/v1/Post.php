@@ -6,13 +6,13 @@ use App\Traits\ApiResponse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use function auth;
 
-class Thread extends BaseModel
+class Post extends BaseModel
 {
     use ApiResponse;
     use HasFactory;
 
     protected $fillable = [
-        'title', 'text', 'slug',
+        'id', 'title', 'text', 'slug',
         'app_user_id',
     ];
 
@@ -76,14 +76,14 @@ class Thread extends BaseModel
 
     public function likes()
     {
-        $userAction = Taxonomy::rateThread();
+        $userAction = Taxonomy::ratePost()->first();
         return $this->morphMany(UserAction::class, 'model')
             ->where('taxonomy_id', $userAction->id);
     }
 
     public function dislikes()
     {
-        $userAction = Taxonomy::rateThread('dislike');
+        $userAction = Taxonomy::ratePost('dislike')->first();
         return $this->morphMany(UserAction::class, 'model')
             ->where('taxonomy_id', $userAction->id);
     }

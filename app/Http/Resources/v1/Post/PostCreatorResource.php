@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources\v1\Thread;
+namespace App\Http\Resources\v1\Post;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ThreadCreatorResource extends JsonResource
+class PostCreatorResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

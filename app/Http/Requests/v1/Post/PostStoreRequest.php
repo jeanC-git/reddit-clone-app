@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\v1\Thread;
+namespace App\Http\Requests\v1\Post;
 
 use App\Http\Requests\v1\ApiFormRequest;
 
-class ThreadStoreRequest extends ApiFormRequest
+class PostStoreRequest extends ApiFormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

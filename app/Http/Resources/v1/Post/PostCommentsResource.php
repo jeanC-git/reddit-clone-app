@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Resources\v1\Thread;
+namespace App\Http\Resources\v1\Post;
 
 use App\Http\Resources\v1\Comment\CommentCreatorResource;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class ThreadCommentsResource extends JsonResource
+class PostCommentsResource extends JsonResource
 {
     /**
      * Transform the resource into an array.

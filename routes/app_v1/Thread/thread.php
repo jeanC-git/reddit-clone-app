@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\v1\RestApiApp\Thread\RestApiThreadController;
+use App\Http\Controllers\v1\RestApiApp\Post\RestApiPostController;
 
-Route::controller(RestApiThreadController::class)
+Route::controller(RestApiPostController::class)
     ->group(function () {
         Route::get('/', 'list');
-        Route::get('/my-threads', 'myThreads');
+        Route::get('/my-posts', 'myPosts');
 
         Route::post('/', 'store');
-        Route::put('/{thread_id}', 'update');
+        Route::put('/{post_id}', 'update');
 
         Route::get('/{slug}', 'show');
         Route::get('/comments/{slug}', 'getComments');

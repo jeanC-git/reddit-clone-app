@@ -12,8 +12,8 @@ class Comment extends BaseModel
     use HasFactory;
 
     protected $fillable = [
-        'text', 'likes', 'dislikes',
-        'thread_id', 'comment_id', 'app_user_id',
+        'id', 'text', 'likes', 'dislikes',
+        'post_id', 'comment_id', 'app_user_id',
     ];
 
     protected $dates = [
@@ -39,9 +39,9 @@ class Comment extends BaseModel
         return $this->belongsTo(AppUser::class, 'app_user_id');
     }
 
-    public function thread()
+    public function post()
     {
-        return $this->belongsTo(Thread::class);
+        return $this->belongsTo(Post::class);
     }
 
     public function parent_comment()
@@ -92,10 +92,10 @@ class Comment extends BaseModel
 
     /* ============================== METHODS ============================== */
 
-    public static function getCommentsByThread($request, $thread)
+    public static function getCommentsByThread($request, $post)
     {
         $q = self::query()
-            ->where('thread_id', $thread->id)
+            ->where('post_id', $post->id)
             ->with([
                 'creator'
             ])

@@ -25,7 +25,7 @@ class CommentStoreRequest extends ApiFormRequest
     {
         return [
             'text' => 'required|string|min:20|max:250',
-            'thread_id' => 'required|exists:threads,id',
+            'post_id' => 'required|exists:posts,id',
             'app_user_id' => 'required|exists:app_users,id',
             'comment_id' => 'nullable',
         ];

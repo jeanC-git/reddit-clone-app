@@ -24,7 +24,7 @@ class AppUser extends Authenticatable implements HasMedia
      * @var array<int, string>
      */
     protected $fillable = [
-        'name', 'last_name', 'email', 'password',
+        'id', 'name', 'last_name', 'email', 'password',
     ];
 
     /**
@@ -50,7 +50,7 @@ class AppUser extends Authenticatable implements HasMedia
 
     public function threads()
     {
-        return $this->hasMany(Thread::class);
+        return $this->hasMany(Post::class);
     }
 
 }

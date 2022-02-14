@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\v1\Comment;
-use App\Models\v1\Thread;
+use App\Models\v1\Post;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
 //        AppUser::factory(20)->create();
-        Thread::factory(20)->create();
+        Post::factory(20)->create();
         Comment::factory(200)->create();
     }
 }

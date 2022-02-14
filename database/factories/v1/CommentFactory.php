@@ -4,7 +4,7 @@ namespace Database\Factories\v1;
 
 use App\Models\v1\AppUser;
 use App\Models\v1\Comment;
-use App\Models\v1\Thread;
+use App\Models\v1\Post;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class CommentFactory extends Factory
@@ -20,7 +20,7 @@ class CommentFactory extends Factory
     {
 
         return [
-            'thread_id' => Thread::inRandomOrder()->first()->id,
+            'post_id' => Post::inRandomOrder()->first()->id,
             'app_user_id' => AppUser::inRandomOrder()->first(),
             'comment_id' => null,
             'likes' => random_int(1,100),
