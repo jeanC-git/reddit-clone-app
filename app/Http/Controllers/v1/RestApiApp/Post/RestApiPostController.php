@@ -18,22 +18,23 @@ class RestApiPostController extends BaseController
     {
         $data = $request->validated();
 
-        $threads = Post::list($data);
+        $posts = Post::list($data);
 
-        PostListResource::collection($threads);
+        PostListResource::collection($posts);
 
-        return $this->success(compact('threads'));
+//        return $this->success(compact('posts'));
+        return $this->success($this->parsePaginateResource($posts, 'posts'));
     }
 
     public function myPosts(PostListRequest $request): \Illuminate\Http\JsonResponse
     {
         $data = $request->validated();
 
-        $threads = Post::list($data);
+        $posts = Post::list($data);
 
-        PostListResource::collection($threads);
+        PostListResource::collection($posts);
 
-        return $this->success(compact('threads'));
+        return $this->success(compact('posts'));
     }
 
     public function store(PostStoreRequest $request): \Illuminate\Http\JsonResponse
@@ -45,7 +46,7 @@ class RestApiPostController extends BaseController
 
         return $this->success([
             'msg' => $data['message'],
-            'comment' => new PostListResource($data['model'])
+            'post' => new PostListResource($data['model'])
         ]);
     }
 

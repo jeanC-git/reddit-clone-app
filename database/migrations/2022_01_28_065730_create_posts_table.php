@@ -21,6 +21,10 @@ class CreatePostsTable extends Migration
             $table->text('text');
             $table->bigInteger('likes')->default(0);
             $table->bigInteger('dislikes')->default(0);
+
+            $table->unsignedBigInteger('category_id');
+            $table->foreign('category_id')->references('id')->on('taxonomies');
+
             $table->softDeletes();
             $table->timestamps();
         });

@@ -4,6 +4,7 @@ namespace App\Http\Resources\v1\Post;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class PostListResource extends JsonResource
 {
@@ -18,16 +19,18 @@ class PostListResource extends JsonResource
         $data = [
             'slug' => $this->slug,
             'title' => $this->title,
-            'text' => $this->text,
+            'text' => Str::limit($this->text, 150, ''),
             'likes' => $this->likes,
             'dislikes' => $this->dislikes,
 
+            'creator_username' => $this->creator->username,
+            'category' => strtoupper($this->category->name),
+
             'comments_count' => $this->comments_count ?? 0,
-            'created_at' => $this->created_at->diffForHumans(),
-            'updated_at' => $this->updated_at->diffForHumans(),
+            'last_updated' => $this->updated_at->longAbsoluteDiffForHumans(),
         ];
 
-        if (!in_array('my-posts', $request->segments()))
+        if (in_array('my-posts', $request->segments()))
             $data['creator'] = new PostCreatorResource($this->creator);
 
         return $data;

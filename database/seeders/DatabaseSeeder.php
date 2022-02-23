@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AppUsersSeeder::class,
             TaxonomySystemSeeder::class,
+            TaxonomyPostCategory::class,
             TaxonomyActionsSeeder::class,
         ]);
-
-//        AppUser::factory(20)->create();
+        
         Post::factory(20)->create();
         Comment::factory(200)->create();
     }

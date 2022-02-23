@@ -13,6 +13,7 @@ class Post extends BaseModel
 
     protected $fillable = [
         'id', 'title', 'text', 'slug',
+        'likes', 'dislikes',
         'app_user_id',
     ];
 
@@ -74,19 +75,24 @@ class Post extends BaseModel
         return $this->morphMany(UserAction::class, 'model');
     }
 
-    public function likes()
+    public function category()
     {
-        $userAction = Taxonomy::ratePost()->first();
-        return $this->morphMany(UserAction::class, 'model')
-            ->where('taxonomy_id', $userAction->id);
+        return $this->belongsTo(Taxonomy::class, 'category_id');
     }
 
-    public function dislikes()
-    {
-        $userAction = Taxonomy::ratePost('dislike')->first();
-        return $this->morphMany(UserAction::class, 'model')
-            ->where('taxonomy_id', $userAction->id);
-    }
+//    public function likes()
+//    {
+//        $userAction = Taxonomy::ratePost()->first();
+//        return $this->morphMany(UserAction::class, 'model')
+//            ->where('taxonomy_id', $userAction->id);
+//    }
+//
+//    public function dislikes()
+//    {
+//        $userAction = Taxonomy::ratePost('dislike')->first();
+//        return $this->morphMany(UserAction::class, 'model')
+//            ->where('taxonomy_id', $userAction->id);
+//    }
 
     public function incrementAction($taxonomy_id, $quantity = 1)
     {
@@ -106,7 +112,8 @@ class Post extends BaseModel
     {
         $q = self::query()
             ->with([
-                'creator'
+                'creator',
+                'category'
             ]);
 
         $q->withCount('comments');
@@ -117,6 +124,6 @@ class Post extends BaseModel
         if (key_exists('no_paginate', $request))
             return $q->get();
 
-        return $q->paginate($request['paginate'] ?? 20);
+        return $q->paginate($request['paginate'] ?? 5);
     }
 }

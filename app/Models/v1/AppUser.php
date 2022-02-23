@@ -24,7 +24,8 @@ class AppUser extends Authenticatable implements HasMedia
      * @var array<int, string>
      */
     protected $fillable = [
-        'id', 'name', 'last_name', 'email', 'password',
+        'id', 'name', 'last_name', 'username',
+        'email', 'password',
     ];
 
     /**

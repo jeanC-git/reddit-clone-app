@@ -15,6 +15,21 @@ class Taxonomy extends BaseModel
 
     /* ============================== SCOPES ============================== */
 
+    public function scopeGroup($q, $group)
+    {
+        return $q->where('group', $group);
+    }
+
+    public function scopeType($q, $type)
+    {
+        return $q->where('type', $type);
+    }
+
+    public function scopeCode($q, $code)
+    {
+        return $q->where('code', $code);
+    }
+
     public function scopeRatePost($q, $action = 'like-post')
     {
         return $q->where('group', 'user-actions')

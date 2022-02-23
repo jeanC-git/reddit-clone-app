@@ -37,7 +37,9 @@ class PostListRequest extends ApiFormRequest
 
     public function prepareForValidation()
     {
-        if (!in_array('my-threads', request()->segments())):
+        // TODO: Mejorar validación para detectar API: My Threads
+        // TODO: o duplicar Request para esa API en específico
+        if (in_array('my-posts', request()->segments())):
             $data['app_user_id'] = auth()->user()->id;
             return $this->merge($data);
         endif;

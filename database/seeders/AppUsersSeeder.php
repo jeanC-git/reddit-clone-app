@@ -19,6 +19,7 @@ class AppUsersSeeder extends Seeder
             'name' => 'App User 1',
             'last_name' => 'Lastname',
             'email' => 'app_user1@example.com',
+            'username' => 'appuser1',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
@@ -28,6 +29,7 @@ class AppUsersSeeder extends Seeder
             'name' => 'App User 2',
             'last_name' => 'Lastname',
             'email' => 'app_user2@example.com',
+            'username' => 'appuser2',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
@@ -37,6 +39,7 @@ class AppUsersSeeder extends Seeder
             'name' => 'App User 3',
             'last_name' => 'Lastname',
             'email' => 'app_user3@example.com',
+            'username' => 'appuser3',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
@@ -46,6 +49,7 @@ class AppUsersSeeder extends Seeder
             'name' => 'App User 4',
             'last_name' => 'Lastname',
             'email' => 'app_user4@example.com',
+            'username' => 'appuser4',
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
             'remember_token' => Str::random(10),
